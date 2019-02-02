@@ -2,14 +2,40 @@
   become: yes
   tasks:
   - name: upgrade all packages
-    yum: name=* state=latest
-  - name: ensure apache is at the latest version
-    yum: name=httpd state=latest
+    yum: 
+      name: '*' 
+      state: latest
+  - name: ensure necessary packages installed and at the latest version
+    yum: 
+      name: 
+        - httpd 
+        - mod_wsgi
+        - python-pip
+      state: latest
+  - name: install flask with pip
+    pip: 
+      name: flask
+  - name: Upload app directory to host
+    copy: 
+      src: './api' 
+      dest: '/var/www/'
+      owner: apache
+      group: apache
+      mode: 0755
+  - name: set permissions
+    file: 
+      dest: /var/www/api
+      owner: apache
+      group: apache
+      mode: 0755
+  - name: stat for conf
+    stat:
+      path: /var/www/api/api.conf
+    register: conf_stat
+  - name: Move conf
+    command: mv /var/www/api/api.conf /etc/httpd/conf.d/api.conf
+    when: conf_stat.stat.exists
   - name: ensure apache is running
-    service: name=httpd state=started
-  - name: ensure git is installed
-    yum: name=git state=latest
-  - name: ensure mod_wsgi is installed
-    yum: name=mod_wsgi state=latest
-  - name: ensure python2-pip is installed
-    yum: name=python-pip state=latest
+    service: 
+      name: httpd
+      state: restarted
