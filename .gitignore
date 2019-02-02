@@ -1,5 +1,6 @@
-# Terraform stattus files
+# Terraform status files and Plugin folder
 terraform.tfstate
 terraform.tfstate.backup
-*.pem
 .terraform/
+# Keys
+*.pem

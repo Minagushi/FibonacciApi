@@ -3,8 +3,6 @@ from flask import request, jsonify
 from math import sqrt
 
 app = flask.Flask(__name__)
-#app.config["DEBUG"] = True
-
 fib = lambda n:int((((1+sqrt(5))**n)-((1-sqrt(5))**n))/((2**n)*sqrt(5)))
 
 @app.route('/', methods=['GET'])
