@@ -7,7 +7,9 @@ variable "profile" {
 variable "key_name" {
   default = "gleb-chuev"
 }
-
+variable "credentials_file" {
+  default = "~/.aws/credentials"
+}
 variable "ssh_key_private" {
   description = "path to private key"
   default     = "/Users/glebchuev/code/parallels-task1/gleb-chuev.pem"
