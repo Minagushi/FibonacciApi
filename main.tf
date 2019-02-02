@@ -67,3 +67,6 @@ resource "aws_instance" "web" {
     command = "ansible-playbook -u '${aws_instance.web.tags.sshUser}' -i ${self.public_ip}, --private-key ${var.ssh_key_private} playbook.yml" 
   }
 }
+output "test link" {
+  value = "http://${aws_instance.web.public_dns}/api/fib?n=10"
+}

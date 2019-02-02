@@ -14,7 +14,7 @@ Steps :
 aws_access_key_id = <your_id>
 aws_secret_access_key = <your_access_key>
 ```
-2. Put credential file path and Profile name into variables.tf of pass them later on with terraform.
+2. Put credential file path and Profile name into variables.tf or pass them later with terraform command.
 3. Create Key-Pair in AWS console or you should have some already. Also put them into variables.
 4. Clone repo somewhere.
 5. Run terraform apply and wait. 

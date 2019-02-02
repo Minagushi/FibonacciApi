@@ -10,7 +10,8 @@ fib = lambda n:int((((1+s5)**n)-((1-s5)**n))/((2**n)*s5))
 @app.route('/', methods=['GET'])
 def home():
     return '''<h1>Fibonacci Calcucattor API</h1>
-<p>A prototype API for calculating Fibonacci numbers.</p>'''
+<p>A prototype API for calculating Fibonacci numbers.</p>
+<p>Just pass any integer with n param to /api/fib, like that: <ip-adress>/api/fib?n=10 and you will get 10th fibonacci number in this exapmle :)</p>'''
 
 # A route to return nth Fibonacci number.
 @app.route('/api/fib', methods=['GET'])
