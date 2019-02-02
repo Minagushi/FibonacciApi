@@ -1,0 +1,13 @@
+- hosts: all
+  become: yes
+  tasks:
+  - name: ensure apache is at the latest version
+    yum: name=httpd state=latest
+  - name: ensure apache is running
+    service: name=httpd state=started
+  - name: ensure git is installed
+    yum: name=git state=latest
+  - name: ensure mod_wsgi is installed
+    yum: name=mod_wsgi state=latest
+  - name: ensure python3 is installed
+    yum: name=python3 state=latest
