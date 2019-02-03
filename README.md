@@ -19,7 +19,7 @@ aws_secret_access_key = <your_access_key>
 4. Clone repo somewhere.
 5. Run terraform apply and wait. 
 
-It will create ec2 t2.micro instance under default VPC and network with custom SG where 80 and 22 ports will be open.
+It will create ec2 t2.micro instance with amazon-linux2 under default VPC and network with custom SG where 80 and 22 ports will be open.
 Ansible will be invoked with local-exec at the end of the provisioning process, it will apply all neccasary configuration to machine.
 In the output of terraform you'll find a "test link" to check if it's working.
 

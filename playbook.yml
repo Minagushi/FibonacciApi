@@ -5,7 +5,7 @@
     yum: 
       name: '*' 
       state: latest
-  - name: ensure necessary packages installed and at the latest version
+  - name: Ensure necessary packages installed and up to date
     yum: 
       name: 
         - httpd 
@@ -22,20 +22,20 @@
       owner: apache
       group: apache
       mode: 0755
-  - name: set permissions
+  - name: Set permissions for app dir
     file: 
       dest: /var/www/api
       owner: apache
       group: apache
       mode: 0755
-  - name: stat for conf
+  - name: Status for api.conf
     stat:
       path: /var/www/api/api.conf
     register: conf_stat
-  - name: Move conf
+  - name: Move api.conf
     command: mv /var/www/api/api.conf /etc/httpd/conf.d/api.conf
     when: conf_stat.stat.exists
-  - name: ensure apache is running
+  - name: ensure apache is running and restarted
     service: 
       name: httpd
       state: restarted
