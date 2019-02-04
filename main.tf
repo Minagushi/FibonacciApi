@@ -55,7 +55,7 @@ resource "aws_instance" "web" {
     sshUser = "ec2-user"
   }
   provisioner "remote-exec" {
-    inline = ["sudo yum -y install python libselinux-python"]
+    inline = ["sudo yum -y install python"]
 
     connection {
       type        = "ssh"
