@@ -17,7 +17,7 @@ aws_secret_access_key = <your_access_key>
 2. Put credential file path and Profile name into variables.tf or pass them later with terraform command.
 3. Create Key-Pair in AWS console or you should have some already. Also put them into variables.
 4. Clone repo somewhere.
-5. Run terraform init to install all necessary providers
+5. Run terraform init to    install all necessary providers
 6. Run terraform apply and wait. 
 
 It will create ec2 t2.micro instance with amazon-linux2 under default VPC and network with custom SG where 80 and 22 ports will be open.
