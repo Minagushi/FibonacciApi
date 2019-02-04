@@ -25,7 +25,7 @@ In the output of terraform you'll find a "test link" to check if it's working.
 
 You also can apply ansible playbook to any other CentOS instance :
 ```
-ansible-playbook -u '<user>' -i <instance-ip>, --private-key <private-key> playbook.yml
+ansible-playbook -u '<user>' -i <instance-ip>, --private-key <private-key> centos7-playbook.yml
 ```
 
 ## Using Api
