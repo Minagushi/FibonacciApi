@@ -24,7 +24,7 @@ It will create ec2 t2.micro instance with amazon-linux2 under default VPC and ne
 Ansible will be invoked with local-exec at the end of the provisioning process, it will apply all neccasary configuration to machine.
 In the output of terraform you'll find a "test link" to check if it's working.
 
-You also can apply ansible playbook to any other CentOS instance :
+You also can apply ansible playbook to any other CentOS7 instance :
 ```
 ansible-playbook -u '<user>' -i <instance-ip>, --private-key <private-key> centos7-playbook.yml
 ```
