@@ -1,0 +1,4 @@
+  - name: Enabling the EPEL repo
+    yum: 
+      name: epel-release
+      state: latest

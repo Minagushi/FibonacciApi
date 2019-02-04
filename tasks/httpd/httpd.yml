@@ -1,0 +1,11 @@
+  - name: Upload apache config to host
+    copy: 
+      src: './tasks/httpd/files/api.conf' 
+      dest: '/etc/httpd/conf.d/'
+      owner: apache
+      group: apache
+      mode: 0755
+  - name: Ensure apache is running and restarted
+    service: 
+      name: httpd
+      state: restarted

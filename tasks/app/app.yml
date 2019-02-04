@@ -1,0 +1,13 @@
+  - name: Upload app directory to host
+    copy: 
+      src: 'tasks/app/api' 
+      dest: '/var/www/'
+      owner: apache
+      group: apache
+      mode: 0755
+  - name: Set permissions for app dir
+    file: 
+      dest: /var/www/api
+      owner: apache
+      group: apache
+      mode: 0755
