@@ -23,8 +23,12 @@ data "aws_ami" "amzn" {
 
   owners = ["137112412989"] # Canonical
 }
+resource "random_string" "id" {
+  length = 6
+  special = false
+}
 resource "aws_security_group" "websg" {
-  name ="webserver-websg"
+  name ="webserver-websg-${random_string.id.result}"
 ingress {
   from_port = "80"
   to_port = "80"
@@ -51,7 +55,7 @@ resource "aws_instance" "web" {
   associate_public_ip_address = true
   vpc_security_group_ids      = ["${aws_security_group.websg.id}"]
   tags = {
-    Name    = "webserver"
+    Name    = "webserver-${random_string.id.result}"
     sshUser = "ec2-user"
   }
   provisioner "remote-exec" {
