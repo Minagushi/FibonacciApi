@@ -17,8 +17,9 @@ aws_secret_access_key = <your_access_key>
 2. Put credential file path and Profile name into variables.tf or pass them later with terraform command.
 3. Create Key-Pair in AWS console or you should have some already. Also put them into variables.
 4. Clone repo somewhere.
-5. Run ```terraform init ./terraform``` to    install all necessary providers
-6. Run ```terraform apply ./terraform``` and wait. 
+5. Run ```terraform init ./terraform``` to install all necessary providers.
+6. Run ```terraform plan ./terraform``` to verify if everything is okay.
+7. Run ```terraform apply ./terraform``` and wait. 
 
 It will create ec2 t2.micro instance with amazon-linux2 under default VPC and network with custom SG where 80 and 22 ports will be open.
 Ansible will be invoked with local-exec at the end of the provisioning process, it will apply all neccasary configuration to machine.
@@ -30,4 +31,4 @@ ansible-playbook -u '<user>' -i <instance-ip>, --private-key <private-key> playb
 ```
 
 ## Using Api
-Usage is pretty simple just pass any integer with n param to /api/fib, like that: ```<ip-adress>/api/fib?n=10``` and you will get 10th fibonacci number in this example :)
+Usage is pretty simple just pass any integer with n param to /api/fib, like that: ```<ip-adress>/api/fib?n=10``` and you will get 10th fibonacci number in this example. If you want response in JSON fomat just add &json param like this : ```<ip-adress>/api/fib?n=10&json```:)

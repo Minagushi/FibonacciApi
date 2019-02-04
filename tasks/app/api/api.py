@@ -24,7 +24,9 @@ def api_fib():
     else:
       return "Error: No n provided. Please specify a n."
     result = fib(n)
-    return jsonify(result)
+    if 'json' in request.args:
+      return jsonify(result)
+    return str(result)
       
 if __name__ == '__main__':
   app.run()
