@@ -1,41 +1,8 @@
 - hosts: all
   become: yes
   tasks:
-  - name: upgrade all packages
-    yum: 
-      name: '*' 
-      state: latest
-  - name: Ensure necessary packages installed and up to date
-    yum: 
-      name: 
-        - httpd 
-        - mod_wsgi
-        - python-pip
-      state: latest
-  - name: install flask with pip
-    pip: 
-      name: flask
-  - name: Upload app directory to host
-    copy: 
-      src: './api' 
-      dest: '/var/www/'
-      owner: apache
-      group: apache
-      mode: 0755
-  - name: Set permissions for app dir
-    file: 
-      dest: /var/www/api
-      owner: apache
-      group: apache
-      mode: 0755
-  - name: Status for api.conf
-    stat:
-      path: /var/www/api/api.conf
-    register: conf_stat
-  - name: Move api.conf
-    command: mv /var/www/api/api.conf /etc/httpd/conf.d/api.conf
-    when: conf_stat.stat.exists
-  - name: ensure apache is running and restarted
-    service: 
-      name: httpd
-      state: restarted
+  - import_tasks: ./tasks/system/epel.yml
+    when: ansible_distribution == 'CentOS'
+  - import_tasks: ./tasks/system/packages.yml
+  - import_tasks: ./tasks/app/app.yml
+  - import_tasks: ./tasks/httpd/httpd.yml
