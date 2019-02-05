@@ -1,10 +1,10 @@
-import flask
+from flask import Flask
 from flask import request, jsonify
 from math import sqrt
 import decimal
 
 s5 = decimal.Decimal(5).sqrt()
-app = flask.Flask(__name__)
+app = Flask(__name__)
 fib = lambda n:int((((1+s5)**n)-((1-s5)**n))/((2**n)*s5))
 
 @app.route('/', methods=['GET'])
